@@ -83,9 +83,11 @@ Pushing changes to a branch other than main
 > It will combine multiple sequences of commits into one unified history
 >
 > Used to combine two branches.
+
 ## ***git pull***
 > `git pull` command first runs `git fetch` which downloads content from the specified remote repository. Then a `git merge` is executed to merge the remote content refs and heads into a new local merge commit
 
+![](images/git-cmds/22-pull.png)
 
 ## **git rebase**
 > This command is used for squashing multiple commits into a single commit
