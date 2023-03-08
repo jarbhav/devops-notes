@@ -482,3 +482,4 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 
 # 2023-03-08
 
+* Wrote documentation regrading git commands
