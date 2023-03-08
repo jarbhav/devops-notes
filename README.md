@@ -1,3 +1,3 @@
 # DevOps Notes
 
-This repository contains notes for my ionternship at Perfios
+This repository contains notes for my internship at Perfios
