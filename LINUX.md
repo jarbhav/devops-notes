@@ -66,7 +66,7 @@ $ pwd
 /
 $ cd
 $ pwd
-/home/rockstar
+/home/vaibhavraj
 ```
 
 As you can see in the last example above, the command `cd` with no arguments moves the current directory to the `home directory`.
@@ -75,8 +75,6 @@ As you can see in the last example above, the command `cd` with no arguments mov
 ### `clear` command
 
 The `clear` command clears the contents of the terminal screen. More accurately, it shifts the display so that the command prompt is at the top of the screen on the first line.
-
-On a physical terminal, the display will be permanently hidden, whereas in a graphical interface, a scrollbar will allow you to go back in the history of the virtual terminal.
 
 ### `cp` command
 
@@ -89,7 +87,7 @@ cp file [file ...] destination
 Example:
 
 ```bash
-$ cp -r /home/rockstar /tmp
+$ cp -r /home/vaibhavraj /tmp
 ```
 
 | Options | Information                                                      |
@@ -113,12 +111,6 @@ $ cp file1 file2
 `file1` is copied as `file2` to this directory.
 
 ```bash
-$ cp file1 /repexist
-```
-
-If the destination directory exists, `file1` is copied to `/repexist`.
-
-```bash
 $ cp file1 /wrongrep
 ```
 
@@ -135,8 +127,8 @@ mv file [file ...] destination
 Examples:
 
 ```bash
-$ mv /home/rockstar/file1 /home/rockstar/file2
-$ mv /home/rockstar/file1 /home/rockstar/file2 /tmp
+$ mv /home/vaibhavraj/file1 /home/vaibhavraj/file2
+$ mv /home/vaibhavraj/file1 /home/vaibhavraj/file2 /tmp
 ```
 
 | Options                                                                        | Information                                                     |
@@ -144,16 +136,16 @@ $ mv /home/rockstar/file1 /home/rockstar/file2 /tmp
 | `-f`                                                                           | Don't ask for confirmation if overwriting the destination file. |
 | `-i`                                                                           | Request confirmation if overwriting destination file (default). |
 
-A few concrete cases will help you understand the difficulties that can arise:
+Examples:
 
 ```bash
-$ mv /home/rockstar/file1 /home/rockstar/file2
+$ mv /home/vaibhavraj/file1 /home/vaibhavraj/file2
 ```
 
 Renames `file1` to `file2`. If `file2` already exists, replace the contents of the file with `file1`.
 
 ```bash
-$ mv /home/rockstar/file1 /home/rockstar/file2 /tmp
+$ mv /home/vaibhavraj/file1 /home/vaibhavraj/file2 /tmp
 ```
 
 Moves `file1` and `file2` into the `/tmp` directory.
@@ -191,36 +183,17 @@ The `rm` command deletes a file or directory.
 rm [-f] [-r] file [file] [...]
 ```
 
-!!! Danger
-
-    Any deletion of a file or directory is final.
-
 | Options | Information                              |
 | ------- | ---------------------------------------- |
 | `-f`    | Do not ask whether to delete. |
 | `-i`    | Ask whether to delete.       |
 | `-r`    | Delete a directory and recursively delete its subdirectories.      |
 
-!!! Note
-
-    The `rm` command itself does not ask for confirmation when deleting files. However, with a Red Hat/Rocky distribution, `rm` does ask for confirmation of deletion because the `rm` command is an `alias` of the `rm -i` command. Don't be surprised if on another distribution, like Debian for example, you don't get a confirmation request.
-
 Deleting a folder with the `rm` command, whether the folder is empty or not, will require the `-r` option to be added.
 
-The end of the options is signaled to the shell by a double dash `--`.
-
-In the example:
-
-```bash
-$ >-hard-hard # To create an empty file called -hard-hard
-hard-hard
-[CTRL+C] To interrupt the creation of the file
-$ rm -f -- -hard-hard
+```shell
+rm -rf directory        # To delete a non-empty directory
 ```
-
-The hard-hard file name starts with a `-`. Without the use of the `--` the shell would have interpreted the `-d` in `-hard-hard` as an option.
-
-
 ### `history` command
 
 The `history` command displays the history of commands that have been entered by the user.
@@ -231,6 +204,7 @@ Example of a history command
 
 ```bash
 $ history
+146 clear
 147 man ls
 148 man history
 ```
@@ -239,8 +213,6 @@ $ history
 | ------- | ------------------------------------------------------------------------------------------------------------------ |
 | `-w`    | Writes the current history to the history file.                                                |
 | `-c`    | Deletes the history of the current session (but not the contents of the `.bash_history` file). |
-
-* Manipulating history:
 
 To manipulate the history, the following commands entered from the command prompt will:
 
@@ -264,7 +236,7 @@ Example:
 
 ```bash
 $ ls /home
-.    ..    rockstar
+.    ..    vaibhavraj
 ```
 
 The main options of the `ls` command are:
@@ -275,46 +247,23 @@ The main options of the `ls` command are:
 | `-i`                                                         | Displays inode numbers.                                                                                                              |
 | `-l`                                                         | Use a long listing format, that is, each line displays long format information for a file or directory.                                 |
 
-The `ls` command, however, has a lot of options (see `man`):
-
-| Option                                                       | Information                                                                                                                          |
-| ------                                                       | ------------                                                                                                                         |
-| `-d`                                                         | Displays information about a directory instead of listing its contents.                                                              |
-| `-g`                                                         | Like -l option, but do not list owner.                                                                                               |
-| `-h`                                                         | Displays file sizes in the most appropriate format (byte, kilobyte, megabyte, gigabyte, ...). `h` stands for Human Readable. Needs to be used with -l option.         |
-| `-s`                                                         | Displays the allocated size of each file, in blocks. In the GNU/Linux operating system, "block" is the smallest unit of storage in the file system, one block equals 4096Byte. |
-| `-A`                                                         | Displays all files in the directory except `.` and `..`                                                                              |
-| `-R`                                                         | Displays the contents of subdirectories recursively.                                                                                 |
-| `-F`                                                         | Displays the type of files. Prints a `/` for a directory, `*` for executables, `@` for a symbolic link, and nothing for a text file. |
-| `-X`                                                         | Sorts files according to their extensions.                                                                                           |
-
 * Description of columns generated by running the `ls -lia` command:
 
 ```bash
 $ ls -lia /home
-78489 drwx------ 4 rockstar rockstar 4096 25 oct. 08:10 rockstar
+7077906 drwxr-xr-x 23 vaibhavraj vaibhavraj 4096 Mar 8 11:48 vaibhavraj
 ```
 
 | Value           | Information                                                                                                   |
 | --------------- | ------------------------------------------------------------------------------------------------------------- |
-| `78489`         | Inode Number.                                                                                                 |
-| `drwx------`    | File type (`d`) and rights (`rwx------`).                                                                     |
-| `4`             | Number of subdirectories (`.` and `..` included). For a file, it represents the number of hard links, and 1 represents itself. |
-| `rockstar`      | User ownership.                                                                                               |
-| `rockstar`      | Group ownership.                                                                                              |
-| `4096`          | For files, it shows the size of the file. For directories, it shows the fixed value of 4096 bytes occupied by the file naming. To calculate the total size of a directory, use `du -sh rockstar/` |
-| `25 oct. 08:10` | Last modified date.                                                                                           |
-| `rockstar`      | The name of the file (or directory).                                                                          |
-
-!!! Note
-
-    **Aliases** are frequently positioned in common distributions.
-
-    This is the case of the alias `ll`:
-
-    ```
-    alias ll='ls -l --color=auto'
-    ```
+| `7077906`         | Inode Number.                                                                                                 |
+| `drwxr-xr-x`    | File type (`d`) and rights (`rwxr-xr-x`).                                                                     |
+| `23`             | Number of subdirectories (`.` and `..` included). For a file, it represents the number of hard links, and 1 represents itself. |
+| `vaibhavraj`      | User ownership.                                                                                               |
+| `vaibhavraj`      | Group ownership.                                                                                              |
+| `4096`          | For files, it shows the size of the file. For directories, it shows the fixed value of 4096 bytes occupied by the file naming. To calculate the total size of a directory, use `du -sh vaibhavraj/` |
+| `Mar  8 11:48` | Last modified date.                                                                                           |
+| `vaibhavraj`      | The name of the file (or directory).                                                                          |
 
 The `ls` command has many options. Here are some advanced examples of uses:
 
@@ -330,23 +279,6 @@ total 1332
 -rw-r--r--.  2 root root     85 18 may.  17:04 resolv.conf
 -rw-r--r--.  1 root root     44 18 may.  17:04 adjtime
 -rw-r--r--.  1 root root    283 18 may.  17:05 mtab
-```
-
-* List `/var` files larger than 1 megabyte but less than 1 gigabyte. The example here uses advanced `grep` commands with regular expressions. Novices don't have to struggle too much, there will be a special tutorial to introduce these regular expressions in the future.
-
-```bash
-$ ls -lhR /var/ | grep ^\- | grep -E "[1-9]*\.[0-9]*M" 
-...
--rw-r--r--. 1 apache apache 1.2M 10 may.  13:02 XB RiyazBdIt.ttf
--rw-r--r--. 1 apache apache 1.2M 10 may.  13:02 XB RiyazBd.ttf
--rw-r--r--. 1 apache apache 1.1M 10 may.  13:02 XB RiyazIt.ttf
-...
-```
-
-Of course, we highly recommend that you use the `find` command.
-
-```bash
-$ find /var -size +1M -a -size -1024M  -a -type f  -exec ls -lh {} \;
 ```
 
 * Show the rights on a folder:
@@ -445,18 +377,16 @@ mkdir [-p] directory [directory] [...]
 Example:
 
 ```bash
-$ mkdir /home/rockstar/work
+$ mkdir /home/vaibhavraj/work
 ```
 
-The "rockstar" directory must exist to create the "work" directory.
+The "vaibhavraj" directory must exist to create the "work" directory.
 
 Otherwise, the `-p` option should be used. The `-p` option creates the parent directories if they do not exist.
 
-!!! Danger
+### `dir` command
 
-    It is not recommended to use Linux command names as directory or file names.
-
-### **dir**
+> `dir` is equivalent to `ls -C -b` that is, by default files are listed in columns, sorted vertically, and special characters are represented by backslash escape sequences.
 
 ### `find` command
 ```
@@ -501,16 +431,12 @@ Examples:
 
 ```bash
 $ date
-Mon May 24 16:46:53 CEST 2021
+Thursday 09 March 2023 12:26:41 PM IST
 $ date -d 20210517 +%j
 137
 ```
 
 In this last example, the `-d` option displays a given date. The `+%j` option formats this date to show only the day of the year.
-
-!!! Warning
-
-    The format of a date can change depending on the value of the language defined in the environment variable `$LANG`.
 
 The date display can follow the following formats:
 
@@ -557,7 +483,7 @@ touch [-t date] file
 Example:
 
 ```bash
-$ touch /home/rockstar/myfile
+$ touch /home/vaibhavraj/myfile
 ```
 
 | Option                            | Information                                                                |
@@ -566,11 +492,7 @@ $ touch /home/rockstar/myfile
 
 Date format: `[AAAA]MMJJhhmm[ss]`
 
-!!! Tip
-
-    The `touch` command is primarily used to create an empty file, but it can be useful for incremental or differential backups for example. Indeed, the only effect of executing a `touch` on a file will be to force it to be saved during the next backup.
-
-### **export**
+### `export` command
 
 The `export` command is used to export variables to child processes.
 
@@ -749,34 +671,359 @@ sshd:x:74:74:Privilege-separeted sshd:/var/empty /sshd:/sbin/nologin
 tcpdump::x:72:72::/:/sbin/nologin
 user1:x:500:500:grp1:/home/user1:/bin/bash
 ```
-
-With the `-f` option, the change information of the file will always be output unless the user exits the monitoring state with <kbd>CTRL</kbd> + <kbd>C</kbd>. This option is very frequently used to track log files (the logs) in real time.
-
 Without the `-n` option, the `tail` command displays the last 10 lines of the file.
 
 
 ## **sysadmin**
-### **passwd**
+### `passwd` command
 
-### **adduser**
+The `passwd` command is used to manage a password.
 
-### **addgroup**
+```
+passwd [-d] [-l] [-S] [-u] [login]
+```
 
-### **deluser**
+Examples:
 
-### **delgroup**
+```shell
+passwd -l albert
+passwd -n 60 -x 90 -w 80 -i 10 patrick
+```
 
-### **chmod**
+| Option | Description                                            |
+| ------ | ------------------------------------------------------ |
+| `-d` | Permanently removes the password. For root (uid=0) use only.         |
+| `-l` | Permanently lock user account. For root (uid=0) use only.            |
+| `-S` | Displays the account status. For root (uid=0) use only.  |
+| `-u` | Permanently unlocks user account. For root (uid=0) use only.          |
+| `-e` | Permanently expires the password. For root (uid=0) use only.         |
+| `-n DAYS` | Minimum password lifetime. Permanent change. For root (uid=0) use only. |
+| `-x DAYS` | Maximum password lifetime. Permanent change. For root (uid=0) use only. |
+| `-w DAYS` | Warning time before expiration. Permanent change. For root (uid=0) use only. |
+| `-i DAYS` | Delay before deactivation when the password expires. Permanent change. For root (uid=0) use only.|
 
-### **chown**
+Use `password -l`, that is, add "!!" at the beginning of the password field of the user corresponding to `/etc/shadow`.
 
-### **ps**
+Example:
 
-### **uname**
+* Alain changes his password:
 
-### **which**
+```
+[alain]$ passwd
+```
 
-### **ln**
+* root changes Alain's password
+
+```
+$ sudo passwd alain
+```
+
+They will have to comply with the security restrictions.
+
+When managing user accounts by shell script, it may be useful to set a default password after creating the user.
+
+This can be done by passing the password to the `passwd` command.
+
+Example:
+
+```
+$ sudo echo "azerty,1" | passwd --stdin philippe
+```
+
+### `adduser` command
+
+The `adduser` command is used to add a new user to a linux system 
+
+```shell
+sudo adduser newuser
+```
+After this command is executed you will be required to respond to a series of questions:
+
+1. Assign and confirm a password for the new user.
+2. Enter any additional information about the new user. This is optional and can be skipped by pressing ENTER if you don’t wish to utilize these fields.
+3. Finally, you’ll be asked to confirm that the information you provided was correct. Press Y to continue.
+
+#### Granting a User Sudo Privileges
+Use the `visudo` command, which opens a configuration file called `/etc/sudoers` in the system’s default editor, and explicitly specify privileges on a per-user basis.
+
+Using `visudo` is the only recommended way to make changes to `/etc/sudoers` because it locks the file against multiple simultaneous edits and performs a validation check on its contents before overwriting the file. This helps to prevent a situation where you misconfigure sudo and cannot fix the problem because you have lost sudo privileges.
+
+```shell
+sudo visudo
+```
+
+```/etc/sudoers
+root    ALL=(ALL:ALL) ALL
+newuser ALL=(ALL:ALL) ALL       # Add this line
+```
+
+### `deluser` command
+
+To delete the user itself, without deleting any of their files
+```shell
+sudo deluser newuser
+```
+
+If, instead, you want to delete the user’s home directory when the user is deleted
+```shell
+sudo deluser --remove-home newuser
+```
+
+If you previously configured sudo privileges for the user you deleted, you may want to remove the relevant line again:
+
+```shell
+sudo visudo
+```
+```/etc/sudoers
+root    ALL=(ALL:ALL) ALL
+newuser ALL=(ALL:ALL) ALL   # DELETE THIS LINE
+```
+
+>This will prevent a new user created with the same name from being accidentally given sudo privileges.
+
+
+### `addgroup` command
+
+To create a new group
+```shell
+sudo addgroup GROUPNAME
+```
+
+To add users to a group
+```shell
+sudo adduser USERNAME GROUPNAME – adds user to group
+```
+
+### `delgroup` command
+
+To delete a group
+```shell
+sudo delgroup GROUPNAME
+```
+To delete users from a group
+```shell
+sudo deluser USERNAME GROUPNAME
+```
+
+### `chmod` command
+
+The `chmod` command allows you to change the access permissions to a file.
+
+```
+chmod [option] mode file
+```
+
+| Option |	Observation                                                           |
+|--------|------------------------------------------------------------------------|
+| `-R`   |  Recursively change the permissions of the directory and all files under the directory. |
+
+The mode indication can be an octal representation (e.g. `744`) or a symbolic representation ([`ugoa`][`+=-`][`rwxst`]).
+
+#### Octal （or number）representation：
+
+| Number | Description      |
+| :---:  |      ---         |
+| 4      |      r           |
+| 2      |      w           | 
+| 1      |      x           |
+| 0      |      -           |
+
+Add the three numbers together to get one user type permission. E.g. **755=rwxr-xr-x**.
+
+![Octal representation](images/nix-cmds/chmod_01.png)
+
+![Rights 777](images/nix-cmds/chmod_02.png)
+
+![Rights 741](images/nix-cmds/chmod_03.png)
+
+!!! info
+
+    Sometimes you will see `chmod 4755`. The number 4 here refers to the special permission **set uid**.
+```
+[root]# ls -l /tmp/fil*
+-rwxrwx--- 1 root root … /tmp/file1
+-rwx--x--- 1 root root … /tmp/file2
+-rwx--xr-- 1 root root … /tmp/file3
+
+[root]# chmod 741 /tmp/file1
+[root]# chmod -R 744 /tmp/file2
+[root]# ls -l /tmp/fic*
+-rwxr----x 1 root root … /tmp/file1
+-rwxr--r-- 1 root root … /tmp/file2
+```
+
+#### Symbolic representation
+
+This method can be considered as a "literal" association between a user type, an operator, and rights.
+
+![Symbolic method](images/nix-cmds/chmod_04.png)
+
+```
+[root]# chmod -R u+rwx,g+wx,o-r /tmp/file1
+[root]# chmod g=x,o-r /tmp/file2
+[root]# chmod -R o=r /tmp/file3
+```
+
+### `chown` command
+
+The `chown` command allows you to change the owners of a file.
+```
+chown [-R] [-v] login[:group] file
+```
+
+Examples:
+```
+$ sudo chown root myfile
+$ sudo chown albert:GroupA myfile
+```
+
+| Option |	Description                                           |
+| ------ | ------------------------------------------------------ |
+| `-R`   |	Recursively changes the owners of the directory and all files under the directory.|
+| `-v`   |	Displays the executed changes.                        |
+
+To change only the owner user:
+
+```
+$ sudo chown albert file
+```
+
+To modify only the owner group:
+
+```
+$ sudo chown :GroupA file
+```
+
+Changing the user and owner group:
+
+```
+$ sudo chown albert:GroupA file
+```
+
+In the following example the group assigned will be the primary group of the specified user.
+
+```
+$ sudo chown albert: file
+```
+
+Change the owner and group of all files in a directory
+
+```
+$ sudo chown -R albert:GroupA /dir1
+```
+
+### `ps` command
+The `ps` command displays the status of running processes.
+```
+ps [-e] [-f] [-u login]
+```
+
+Example:
+```
+# ps -fu root
+```
+
+|  Option    |  Description                     |
+|------------|----------------------------------|
+| `-e`       | Displays all processes.          |
+| `-f`       | Displays additional information. |
+| `-u` login | Displays the user's processes.   |
+
+Some additional options:
+
+|  Option               |  Description                                      |
+|-----------------------|---------------------------------------------------|
+| `-g`                  | Displays the processes in the group.              |
+| `-t tty`              | Displays the processes running from the terminal. |
+| `-p PID`              | Displays the process information.                 |
+| `-H`                  | Displays the information in a tree structure.     |
+| `-I`                  | Displays additional information.                  |
+| `--sort COL`          | Sort the result according to a column.            |
+| `--headers`           | Displays the header on each page of the terminal. |
+| `--format "%a %b %c"` | Customize the output display format.              |
+
+Without an option specified, the `ps` command only displays processes running from the current terminal.
+
+The result is displayed in columns:
+
+```
+# ps -ef
+UID  PID PPID C STIME  TTY TIME      CMD
+root 1   0    0 Jan01  ?   00:00/03  /sbin/init
+```
+
+| Column  |  Description                |
+|----------|-----------------------------|
+| `UID`    | Owner user.                 |
+| `PID`    | Process identifier.         |
+| `PPID`   | Parent process identifier.  |
+| `C`      | Priority of the process.    |
+| `STIME`  | Date and time of execution. |
+| `TTY`    | Execution terminal.         |
+| `TIME`   | Processing duration.        |
+| `CMD`    | Command executed.           |
+
+The behaviour of the control can be fully customized:
+
+```
+# ps -e --format "%P %p %c %n" --sort ppid --headers
+ PPID   PID COMMAND          NI
+    0     1 systemd           0
+    0     2 kthreadd          0
+    1   516 systemd-journal   0
+    1   538 systemd-udevd     0
+    1   598 lvmetad           0
+    1   643 auditd           -4
+    1   668 rtkit-daemon      1
+    1   670 sssd              0
+```
+
+### `uname` command
+* The uname command prints the system information.
+
+### Common Examples
+```shell
+uname
+uname - a
+```
+
+### Examples With Details
+```shell
+uname       # Print system information. Equivalent to uname -s.
+uname -s    # Print the kernel name. Eg. Linux.
+uname -n    # Print the network node hostname. Eg. dilbert-pc
+uname -r    # Print the kernel release. Eg. 3.13.0-43-generic
+uname -v    # Print the kernel version. Eg. #72-Ubuntu SMP Mon Dec 8 19:35:06 UTC 2014
+uname -m    # Print the machine hardware name. Eg. x86_64. Useful to find out if the machine is 64-bit or 32-bit.
+uname -p    # Print the processor type or "unknown". Eg. x86_64. Useful to find out if the machine is 64-bit or 32-bit.
+uname -i    # Print the hardware platform or "unknown". Eg. i386. Useful to find out if the machine is 64-bit or 32-bit.
+uname -o    # Print the operating system. Eg. GNU/Linux
+uname -a    # Print all information in the above order.
+```
+
+### `which` command
+* The which command locates a command.
+* The which command returns the pathnames of the files (or links) which would be executed in the current environment,
+    had its arguments been given as commands.
+* The which command searches the PATH for executable files matching the names of the arguments.
+* The which command does NOT follow symbolic links.
+
+### Common Examples
+```shell
+which ls
+```
+
+### Examples With Details
+```shell
+which ls        # Outputs /bin/ls. Locate the executable file associated with a given command ls.
+which ls rm     # Multiple arguments can be passed to which command. The exit status will be as follows,
+                # 0 - if all specified commands are found and executable.
+                # 1 - if one or more specified commands is nonexistent or not executable.
+                # 2 - if an invalid option is specified.
+which -a ls     # Use the -a switch to print all matching pathnames of each argument.
+```
+
+### `ln` command
 
 Hard Links : Can't link to directories, and can't link to external filesystems
 ```
@@ -788,7 +1035,7 @@ Soft Links : Can link to other filesystems and to directories, but when the orig
 ln -s <original> <link>
 ```
 
-### **crontab**
+### `crontab` command
 
 ```
 crontab -l
@@ -803,8 +1050,170 @@ To edit cron jobs
 * To generate cronjob commands use [this](https://crontab-generator.org/).
 
 ## *Networking*
-### **ssh**
+### `ssh` command
+* The ssh command is an Open SSH client.
+* The ssh is an SSH client program for logging into a remote machine and for executing commands on a remote machine.
+* It is intended to replace rlogin and rsh, and provide secure encrypted communications between two untrusted hosts
+  over an insecure network.
+* Steps for setting up an SSH client
+    - Generate key pairs using ssh-keygen.
+    - Setup local host (which runs SSH Client).
+    - Setup remote host (which runs SSH Server).
 
-### **scp**
+#### Common Examples
+```shell
+ssh dilbert@jupiter
+ssh jupiter
+```
 
-### **rsync**
+#### Examples With Details
+```shell
+ssh dilbert@jupiter                 # ssh to the remote host jupiter using the username dilbert. Username is Optional.
+ssh jupiter                         # ssh to the remote host jupiter using the configuration file ~/.ssh/config.
+ssh -2 jupiter                      # Default. Forces ssh to try protocol version 2 only. More secure than version 1.
+ssh -6 jupiter                      # Forces ssh to use IPv6 addresses only. Use -4 for IPv4.
+exit                                # Terminate ssh sessions from the server end.
+Ctrl-d                              # Same as above.
+logout                              # Same as above.
+(RETURN)(RETURN)~.                  # Terminate SSH connection from the client end instead of the server end. This is
+                                    # useful if connectivity is lost with the machine and there is no way of ending the
+                                    # shell session.
+ssh -F /path/to/config jupiter      # Specify SSH config file.
+ssh -i /path/to/ssh-key jupiter     # Specify SSH private key file.
+```
+
+### `scp` command
+* The scp command is a secure copy (remote file copy program) utility.
+
+#### Common Examples
+```shell
+scp -C user@host1:/path/to/filename user@host2:filename
+scp -C sshconfig:/path/to/filename user@host2:filename
+scp -Cr cheetah:dilbert/test .
+```
+
+#### Examples With Details
+```shell
+scp user@host1:/path/to/filename user@host2:filename        # Common syntax.
+scp sshconfig:/path/to/filename user@host2:filename         # Another common syntax if ssh is configured.
+scp cheetah:dilbert/test/file1.txt .                        # Copy remote file "dilbert/test/file1.txt" on remote host
+                                                            # "cheetah" to current local directory. Note the period.
+scp t1.txt cheetah:dilbert/test/t4.txt                      # Copy local file t1.txt to remote location
+                                                            # "dilbert/test/t4.txt" on remote host "cheetah".
+scp cheetah:dilbert/test/\{t1.txt,t2.txt\} .                # Copy multiple remote files to current local directory at
+                                                            # one shot.
+scp -r cheetah:dilbert/test .                               # Copy a directory and all its subdirectories recursively.
+scp -C cheetah:dilbert/test/t1.txt .                        # The -C flag enables compression by passing the flag to
+                                                            # ssh.
+scp -v cheetah:dilbert/test/t1.txt .                        # The -v flag is to run in verbose mode. Use -q flag for
+                                                            # quiet mode.
+scp dilbert@cheetah:t1.txt .                                # Prompts for password if ssh is not configured. Otherwise
+                                                            # use ssh config for "cheetah".
+scp -P22 user@cheetah:install.log .                         # -P flag is to specify port on remote host to run scp.
+scp saturn:t1.txt cheetah:dilbert/t1.txt                    # Copies from host "B" to host "C" while logged into host
+                                                            # "A". SSH config "cheetah" should exist on host "saturn"
+                                                            # for this to work. Use -v option to explore more.
+vim scp://cheetah/dilbert/t1.txt                            # Use VIM to open a remote file using scp. Syntax: vim
+                                                            # scp://username@host/[/absolute]path/to/file.
+scp -l10 user@urfix.com:/home/urfix/* .                     # Restrict Bandwidth for scp
+vimdiff scp://[@]/                                          # Compare a remote file with a local file
+
+# Copy something to multiple SSH hosts with a bash shell script loop.
+for h in host1 host2 host3 host4 ; { scp file user@$h:/destination_path/ ; }
+```
+
+### `rsync` command
+* The rsync command is a fast, versatile, remote (and local) file-copying tool.
+* Use grsync tool for a GUI based rsync. Install it using sudo apt-get install grsync.
+* Never run rsync without using the --dry-run option first. Only after you have completed several safe runs and
+  verified no undesired files are copied, desired files are deleted, nothing is missing, and nothing has been
+  modified without your consent, only then should you try copying files in earnest.
+* Supports copying links, devices, owners, groups and permissions.
+* It’s faster than scp (Secure Copy) because rsync uses remote-update protocol which allows to transfer just
+  the differences between two sets of files. First time, it copies the whole content of a file or a directory
+  from source to destination but from next time, it copies only the changed blocks and bytes to the destination.
+* Rsync consumes less bandwidth as it uses compression and decompression method while sending and receiving data
+  both ends.
+* If source is a directory WITHOUT trailing spaces then it will be created in the destination directory otherwise
+  it wont be.
+
+#### Common Examples
+```shell
+rsync -avs --delete --dry-run -i dir1/ backup/
+rsync -avs --delete -i dir1/ backup/
+```
+
+#### Examples With Details
+```shell
+rsync -avs dir1/ backup/                                            # General syntax is rsync FLAGS/OPTIONS SRC DEST
+                                                                    # Use -a flag for all objects, -v for verbose output
+                                                                    # and -s for not allowing remote shell to interpret
+                                                                    # characters. The -s flag means file names with
+                                                                    # spaces and special characters will not be
+                                                                    # translated. This is needed especially if you have
+                                                                    # Windows files, too.
+rsync -avs --delete dir1/ backup/                                   # The --delete option will delete files at the
+                                                                    # target/destination (backup), if they do not exist
+                                                                    # in the source (dir1). This will always keep an up
+                                                                    # to date list of files and the source and
+                                                                    # destination will match. Also, the destination will
+                                                                    # not slowly grow in size with older & irrelevant
+                                                                    # content.
+rsync -avs --delete --dry-run -i dir1/ backup/                      # The --dry-run option will give a detailed list of
+                                                                    # what would have happened had you run for real.
+rsync -avs --delete --log-file=rsync.log dir1/ backup/              # The --log-file=/path/to/file.log option will write
+                                                                    # all changes to a log file.
+rsync -avs -i --delete dir1/ backup/                                # The -i flag requests a simple itemised list of the
+                                                                    # changes that  are  being  made  to  each file,
+                                                                    # including attribute  changes.
+rsync -avs --remove-source-files dir1/ backup/                      # Use --remove-source-files option automatically
+                                                                    # delete source files after successful transfer.
+
+# Include and Exclude Paths
+rsync -avz --exclude 'file_?' dir1/ backup/                         # Use --exclude option to exclude multiple
+                                                                    # directories that matches a pattern.
+rsync -avz --exclude 'file_1' dir1/ backup/                         # Exclude a specific file.
+rsync -avz --exclude '/file1' dir1/ backup/                         # IMPORTANT: Exclude path is always relative
+                                                                    # /file1 means /dir1/file1.
+rsync -avz --exclude file1 --exclude dir1/file2 dir1/ backup/       # Multiple --exclude option can be used to exclude
+                                                                    # multiple files and directories.
+rsync -avz --exclude-from 'rsync_exclude_list.txt' dir1/ backup/    # Exclude multiple files and directories at the
+                                                                    # same time using a list mentioned in a file.
+rsync -avz --include-from 'rsync_include_list.txt'  dir1/ backup/   # Similarly, include multiple files and directories
+                                                                    # at the same time using a list mentioned in a file.
+                                                                    # IMPORTANT: All files and directories mentioned in
+                                                                    # include or exclude file is relative to dir1/.
+rsync -avs --copy-links links/ destination/                         # Use --copy-links to copy content instead of
+                                                                    # symbolic links
+rsync -avs -L /links/ destination/                                  # Short form of --copy-links
+
+# Examples of LOCAL rsync
+rsync -vh  file1  backup/                                           # Copy/Sync one file locally.
+                                                                    # Use -v switch for verbose,
+                                                                    # Use -h switch for human-readable, output numbers
+                                                                    # in a human-readable format.
+rsync -vh  file?  backup/                                           # Copy/Sync one or more files using patterns locally
+rsync -avh  dir2/ backup/dir2/                                      # Copy/Sync files and directories locally.
+                                                                    # Use -a switch for archive mode. The archive mode
+                                                                    # allows copying files recursively and it also
+                                                                    # preserves symbolic links, file permissions, user &
+                                                                    #  group ownerships and timestamps.
+
+# Examples of REMOTE rsync
+rsync -avzh dir2/ dilbert@mars:/home/dilbert/backup/                # Copy/Sync a Directory from Local Server to a
+                                                                    # Remote Server. Use -z switch to compress file
+                                                                    # data. The directory 'backup' will be created if
+                                                                    # it does not exist.
+                                                                    # If SSH is configured, it will be used.
+rsync -avzh dilbert@mars:/home/dilbert/backup/dir2 backup/dir2/     # Copy/Sync a Remote Directory to a Local Machine.
+
+# Examples of REMOTE rsync using SSH
+rsync -avzhe ssh backup/dir2/ mars:/home/dilbert/backup/dir2/       # Copy/Sync a File from a Local Server to a Remote
+                                                                    # Server with SSH.
+                                                                    # Use -e switch to specify a protocol with rsync.
+                                                                    # The -e ssh is used to specify ssh as the protocol.
+rsync -avzhe ssh mars:/home/dilbert/backup/dir2/ backup/dir2/       # Copy/Sync a File from a remote server to a local
+                                                                    # server using SSH.
+rsync -avzhe ssh --progress mars:/home/dilbert/backup/ backup/dir2/ # Use --progress option to show progress while
+                                                                    # transferring data.
+```
