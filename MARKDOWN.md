@@ -175,3 +175,26 @@ To create a task list, preface list items with a hyphen and space followed by [ 
 - [x] B  
 - [x] C  
 
+# `Escaping`
+BACKSLASH ESCAPES
+Markdown allows you to use backslash escapes to generate literal characters which would otherwise have special meaning in Markdown’s formatting syntax. For example, if you wanted to surround a word with literal asterisks you can use backslashes before the asterisks, like this:
+
+```md
+\*literal asterisks\*
+```
+
+\*literal asterisks\*
+
+# `Mentioning people and teams`
+You can mention a person or team on GitHub by typing `@` plus their username or team name. This will trigger a notification and bring their attention to the conversation. People will also receive a notification if you edit a comment to mention their username or team name. For more information about notifications, see "About notifications."
+
+Note: A person will only be notified about a mention if the person has read access to the repository and, if the repository is owned by an organization, the person is a member of the organization.
+
+# `Referencing issues and pull requests`
+You can bring up a list of suggested issues and pull requests within the repository by typing` #`. Type the issue or pull request number or title to filter the list, and then press either tab or enter to complete the highlighted result.
+
+
+# Other resources
+Github guidelines for Markdown[^1]
+
+[^1]:https://docs.github.com/en/get-started/writing-on-github
