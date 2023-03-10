@@ -500,3 +500,4 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 * ThreadPools
 * Learnt about packages, modules
 * Learnt about decorators
+* Added .gitignore file

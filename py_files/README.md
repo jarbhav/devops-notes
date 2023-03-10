@@ -6,6 +6,8 @@ Pools prevent your computer from being killed like that by limiting the number o
 
 In summary: pools make sure that no more than a certain number of workers are active at any given time.
 
+[Documentation](https://docs.python.org/3/library/concurrent.futures.html)
+
 >***Threading is more suitable for IO-type tasks*** (waiting concurrently) while ***processes are best suited for CPU-heavy tasks*** (using more CPU’s)
 
 # Packages
