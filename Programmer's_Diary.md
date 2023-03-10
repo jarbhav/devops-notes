@@ -494,3 +494,9 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 * Pushed the changes to github
 
 # 2023-03-10
+
+* Learn about multithreading
+* ProcessPools
+* ThreadPools
+* Learnt about packages, modules
+* Learnt about decorators
