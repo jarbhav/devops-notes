@@ -478,7 +478,7 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 
 * Setup GitLab account
 * Started writing documentation about linux commands
-* Converted Programmers's diary to markdown
+* Converted Programmers's diary to markdown format
 
 # 2023-03-08
 
@@ -492,3 +492,5 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 * Completed documentation regarding linux commands
 * Completed documentation about markdown
 * Pushed the changes to github
+
+# 2023-03-10
