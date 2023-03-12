@@ -20,3 +20,5 @@ You can have functions, classes or variables inside a Python module.
 
 # Python Libraries
 A Python library is a collection of modules and packages.
+
+> The `heavy_function` folder is a `package` which contains two modules `cpu_heavy` and `io_heavy`, they have functions. The package also contains `__init__.py` which is responsible for importing the two modules. The files starting with 0 are using these modules.
