@@ -519,3 +519,5 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 1. Counter
 1. OrderedDict
 1. defaultdict
+
+[Data Structures](/py_files/README.md#python-data-structures)
