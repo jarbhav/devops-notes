@@ -485,6 +485,7 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 * Created a Github repository and pushed all the markdown docs there
 * Implemented and practised git commands
 * Completed documentation regarding git commands
+* [Work Done](/GIT.md)
 
 # 2023-03-09
 
@@ -492,6 +493,7 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 * Completed documentation regarding linux commands
 * Completed documentation about markdown
 * Pushed the changes to github
+* [Work Done](/LINUX.md)
 
 # 2023-03-10
 
@@ -505,7 +507,7 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 
 # 2023-03-13
 
-* Read about advanced git commands
+[Read about advanced git commands](/GIT.md#git)
 
 ## Data structures in python 
 
