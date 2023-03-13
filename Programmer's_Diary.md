@@ -501,3 +501,19 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 * Learnt about packages, modules
 * Learnt about decorators
 * Added .gitignore file
+* [Work Done](/py_files)
+
+# 2023-03-13
+
+* Read about advanced git commands
+
+## Data structures in python 
+
+[Docs](https://docs.python.org/3/library/collections.html)
+
+1. namedtuple()
+1. deque
+1. ChainMap
+1. Counter
+1. OrderedDict
+1. defaultdict
