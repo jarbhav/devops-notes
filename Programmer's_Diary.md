@@ -525,3 +525,50 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 # 2023-03-14
 
 * Added code examples for python data structures
+* Added new code examples for decorators
+
+## Tasks assigned
+
+1. Transfer files through an ssh tunnel
+1. Using ssh login to another person's system
+1. Make ssh connection between 5 systems
+
+## Tasks completed
+
+1. Using ssh to login to another system
+
+On both systems
+```bash
+sudo apt update
+sudo apt install openssh-server
+```
+From user1(vaibhavraj)
+```
+ssh vivek@192.168.10.104
+```
+
+2. Transferring files
+    * To copy files from source
+    ```bash
+    vaibhavraj@vaibhavraj-Latitude-5531:~/Downloads$ scp vivek@192.168.10.104:/home/vivek/perfios_internship/file@vivek.txt /home/vaibhavraj/Downloads/
+    vivek@192.168.10.104s password: 
+    file@vivek.txt                                100%    0     0.0KB/s   00:00    
+    vaibhavraj@vaibhavraj-Latitude-5531:~/Downloads$ ls | grep file@vivek.txt 
+    file@vivek.txt
+    vaibhavraj@vaibhavraj-Latitude-5531:~/Downloads$
+    ```
+    
+    * To send files to destination
+    ```bash
+    vaibhavraj@vaibhavraj-Latitude-5531:~/Downloads$ touch file@vaibhav.txt
+    vaibhavraj@vaibhavraj-Latitude-5531:~/Downloads$ scp file@vaibhav.txt vivek@192.168.10.104:/home/vivek/Downloads
+    vivek@192.168.10.104 password: 
+    file@vaibhav.txt                              100%    0     0.0KB/s   00:00    
+    vaibhavraj@vaibhavraj-Latitude-5531:~/Downloads$ 
+
+    vivek@vivek-Latitude-5531:~/Downloads$ ls -l | grep file@vaibhav.txt 
+    -rw-rw-r-- 1 vivek vivek         0 Mar 14 15:23 file@vaibhav.txt
+    vivek@vivek-Latitude-5531:~/Downloads$ 
+    ```
+3. Make ssh connection between 5 systems
+
