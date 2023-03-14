@@ -584,7 +584,7 @@ guest@ushabhat-Latitude-5531:~$ ls
 vaibhav.txt
 ``` 
 
-4.Login using ssh-key
+4. Login using ssh-key
     1. using `ssh-keygen -b 4096` to create a ssh key of 4096 bytes
     2. using `ssh-copy-id guest@192.168.10.123` to copy the ssh public key to the remote system in which we want to login
     3. using `ssh guest@192.168.10.123` to connect using ssh
