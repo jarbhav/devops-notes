@@ -532,6 +532,7 @@ Tomcat is a web server (can handle HTTP requests/responses) and web container (i
 1. Transfer files through an ssh tunnel
 1. Using ssh login to another person's system
 1. Make ssh connection between 5 systems
+1. Login without password (using ssh-key)
 
 ## Tasks completed
 
@@ -572,3 +573,82 @@ ssh vivek@192.168.10.104
     ```
 3. Make ssh connection between 5 systems
 
+    * Make a guest account for each system with the same password
+```bash
+vaibhavraj@vaibhavraj-Latitude-5531:~/Desktop/devops-notes$ ssh guest@192.168.10.123
+guest@ushabhat-Latitude-5531:~$ ls
+guest@ushabhat-Latitude-5531:~$ pwd
+/home/guest
+guest@ushabhat-Latitude-5531:~$ touch vaibhav.txt
+guest@ushabhat-Latitude-5531:~$ ls
+vaibhav.txt
+``` 
+
+4.Login using ssh-key
+
+```bash
+vaibhavraj@vaibhavraj-Latitude-5531:~/Downloads$ ssh-keygen -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/vaibhavraj/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/vaibhavraj/.ssh/id_rsa
+Your public key has been saved in /home/vaibhavraj/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:Ug5Qr1/vo9kbDd9GvRUzxWzYHrOy9OnQLjVRygimlYY vaibhavraj@vaibhavraj-Latitude-5531
+The key's randomart image is:
++---[RSA 4096]----+
+|    ...  . .   =.|
+|     . .E *   .oB|
+|      . o= . o B=|
+|       =.   .ooo*|
+|      o S . o = *|
+|       o . . * Oo|
+|        .   o B.+|
+|           +.o + |
+|          o.+o.  |
++----[SHA256]-----+
+vaibhavraj@vaibhavraj-Latitude-5531:~/Downloads$ ssh-copy-id guest@192.168.10.123
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+guest@192.168.10.123's password: 
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'guest@192.168.10.123'"
+and check to make sure that only the key(s) you wanted were added.
+
+vaibhavraj@vaibhavraj-Latitude-5531:~/Downloads$ ssh guest@192.168.10.123
+Welcome to Ubuntu 20.04.5 LTS (GNU/Linux 5.14.0-1058-oem x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+1 device has a firmware upgrade available.
+Run `fwupdmgr get-upgrades` for more information.
+
+
+ * Introducing Expanded Security Maintenance for Applications.
+   Receive updates to over 25,000 software packages with your
+   Ubuntu Pro subscription. Free for personal use.
+
+     https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+9 updates can be applied immediately.
+6 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+Last login: Tue Mar 14 15:54:53 2023 from 192.168.10.82
+guest@ushabhat-Latitude-5531:~$ ls
+vaibhav.txt
+guest@ushabhat-Latitude-5531:~$ touch login_withoutkey_vaibhav
+guest@ushabhat-Latitude-5531:~$ ls
+login_withoutkey_vaibhav  vaibhav.txt
+guest@ushabhat-Latitude-5531:~$
+```
