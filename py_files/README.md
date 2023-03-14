@@ -25,9 +25,79 @@ A Python library is a collection of modules and packages.
 
 # Python Data Structures
 
-1. [namedtuple()](https://docs.python.org/3/library/collections.html#collections.namedtuple)
-1. [deque](https://docs.python.org/3/library/collections.html#collections.deque)
-1. [ChainMap](https://docs.python.org/3/library/collections.html#collections.ChainMap)
-1. [Counter](https://docs.python.org/3/library/collections.html#collections.Counter)
-1. [OrderedDict](https://docs.python.org/3/library/collections.html#collections.OrderedDict)
-1. [defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict)
+Apart from builtin data structures like list, tuple, dictionary and set, in the collections module we have other data structures like:
+
+## [namedtuple()](https://docs.python.org/3/library/collections.html#collections.namedtuple)
+Named tuples assign meaning to each position in a tuple and allow for more readable, self-documenting code. They can be used wherever regular tuples are used, and they add the ability to access fields by name instead of position index.
+```python
+>>> Book = namedtuple('Book', ['id', 'title', 'authors'])
+>>> b1 = Book('11', 'AB', 'XY')
+>>> b1.id
+'11'
+>>> b1.title
+'AB'
+>>> b1.authors
+'XY'
+```
+
+## [deque](https://docs.python.org/3/library/collections.html#collections.deque)
+Doubly ended queue
+```
+>>> dq = deque('AaBbCc')
+>>> dq
+deque(['A', 'a', 'B', 'b', 'C', 'c'])
+>>> dq.pop()
+'c'
+>>> dq.popleft()
+'A'
+>>> dq
+deque(['a', 'B', 'b', 'C'])
+>>> dq.append('D')
+>>> dq.appendleft('A')
+>>> dq
+deque(['A', 'a', 'B', 'b', 'C', 'D'])
+>>> 
+
+```
+## [ChainMap](https://docs.python.org/3/library/collections.html#collections.ChainMap)
+```python
+baseline = {'music': 'bach', 'art': 'rembrandt'}
+adjustments = {'art': 'van gogh', 'opera': 'carmen'}
+list(ChainMap(adjustments, baseline))
+['music', 'art', 'opera']
+
+```
+## [Counter](https://docs.python.org/3/library/collections.html#collections.Counter)
+```python
+cnt = Counter()
+for word in ['red', 'blue', 'red', 'green', 'blue', 'blue']:
+    cnt[word] += 1
+cnt
+Counter({'blue': 3, 'red': 2, 'green': 1})
+
+```
+## [OrderedDict](https://docs.python.org/3/library/collections.html#collections.OrderedDict)
+Python OrderedDict is a dict subclass that maintains the items insertion order. When we iterate over an OrderedDict, items are returned in the order they were inserted. A regular dictionary doesn’t track the insertion order.
+
+[Other major differences](https://docs.python.org/3/library/collections.html#ordereddict-objects:~:text=Some%20differences%20from%20dict%20still%20remain)
+
+## [defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict)
+```python
+s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
+d = defaultdict(list)
+for k, v in s:
+    d[k].append(v)
+
+sorted(d.items())
+[('blue', [2, 4]), ('red', [1]), ('yellow', [1, 3])]
+```
+
+```python
+s = [('red', 1), ('blue', 2), ('red', 3), ('blue', 4), ('red', 1), ('blue', 4)]
+d = defaultdict(set)
+for k, v in s:
+    d[k].add(v)
+
+sorted(d.items())
+[('blue', {2, 4}), ('red', {1, 3})]
+```
